@@ -8,3 +8,112 @@ https://a8fe-2405-201-d02c-e927-250c-8c4e-3954-7d34.ngrok-free.app/
 
 
 https://dribbble.com/shots/24175820-Landing-Page-for-Construction-Company
+
+
+import React, { useState, useEffect } from "react";
+
+const GeneticHistoryForm = ({ formData, setFormData }) => {
+  const [localData, setLocalData] = useState(formData);
+
+  useEffect(() => {
+    setLocalData(formData);
+  }, [formData]);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setLocalData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleRadioChange = (event) => {
+    const { name, value } = event.target;
+    setLocalData((prevData) => ({
+      ...prevData,
+      [name]: value,
+      familyGeneticDisorders: value === "yes" ? prevData.familyGeneticDisorders : "",
+    }));
+  };
+
+  useEffect(() => {
+    setFormData(localData);
+  }, [localData, setFormData]);
+
+  return (
+    <div className="space-y-4">
+      <div>
+        <label className="block mb-2">
+          Do you have a family history of genetic disorders?
+        </label>
+        <div className="space-x-4">
+          {["yes", "no"].map((value) => (
+            <label key={value} className="inline-flex items-center">
+              <input
+                type="radio"
+                name="hasFamilyGeneticDisorders"
+                value={value}
+                checked={localData.hasFamilyGeneticDisorders === value}
+                onChange={handleRadioChange}
+                className="mr-2"
+              />
+              {value.charAt(0).toUpperCase() + value.slice(1)}
+            </label>
+          ))}
+        </div>
+        {localData.hasFamilyGeneticDisorders === "yes" && (
+          <input
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4"
+            type="text"
+            placeholder="Please specify"
+            name="familyGeneticDisorders"
+            value={localData.familyGeneticDisorders}
+            onChange={handleChange}
+          />
+        )}
+      </div>
+      <div>
+        <label className="block mb-2">
+          Has anyone in your family undergone genetic testing before?
+        </label>
+        <div className="space-x-4">
+          {["yes", "no", "unknown"].map((value) => (
+            <label key={value} className="inline-flex items-center">
+              <input
+                type="radio"
+                name="familyGeneticTesting"
+                value={value}
+                checked={localData.familyGeneticTesting === value}
+                onChange={handleChange}
+                className="mr-2"
+              />
+              {value.charAt(0).toUpperCase() + value.slice(1)}
+            </label>
+          ))}
+        </div>
+      </div>
+      <div>
+        <label className="block mb-2">
+          Are you interested in learning about potential hereditary risks?
+        </label>
+        <div className="space-x-4">
+          {["yes", "no"].map((value) => (
+            <label key={value} className="inline-flex items-center">
+              <input
+                type="radio"
+                name="interestedInHereditaryRisks"
+                value={value}
+                checked={localData.interestedInHereditaryRisks === value}
+                onChange={handleChange}
+                className="mr-2"
+              />
+              {value.charAt(0).toUpperCase() + value.slice(1)}
+            </label>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default GeneticHistoryForm;
