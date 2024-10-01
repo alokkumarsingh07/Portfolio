@@ -14,211 +14,109 @@ https://teams.microsoft.com/l/meetup-join/19%3ameeting_ODlhY2E0OGQtNTFlOS00M2Q3L
 https://d08c-2405-201-d02c-e927-89de-e78b-d459-b038.ngrok-free.app/
 
 
-const MedicalHistoryForm = ({ formData, setFormData }) => (
-  <div className="space-y-4">
-    <div>
-      <label className="block mb-2">
-        Do you have any known medical conditions? If yes, please specify:
-      </label>
-      <div className="space-x-4">
-        {["yes", "no"].map((value) => (
-          <label key={value} className="inline-flex items-center">
+const GeneticHistoryForm = ({ formData, setFormData }) => {
+  return (
+    <div className="space-y-4">
+      <div>
+        <label className="block mb-2">
+          Do you have a family history of genetic disorders?
+        </label>
+        <div className="flex space-x-4 mb-2">
+          <label className="inline-flex items-center">
             <input
               type="radio"
-              name="medicalConditions"
-              value={value}
-              checked={formData.medicalConditions === value}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  medicalConditions: e.target.value,
-                  // medicalConditionsDetails: "",
-                })
-              }
+              name="familyGeneticDisorders"
+              value="yes"
+              checked={formData.familyGeneticDisorders === "yes"}
+              onChange={() => {
+                setFormData({ ...formData, familyGeneticDisorders: "yes" });
+              }}
               className="mr-2"
             />
-            {value.charAt(0).toUpperCase() + value.slice(1)}
+            Yes
           </label>
-        ))}
-      </div>
-      {formData.medicalConditions === "yes" && (
-        <input
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          type="text"
-          name="familyGeneticDetails"
-          placeholder="Please specify..."
-          value={formData.medicalConditionsDetails || ""}
-          onChange={(e) =>
-            setFormData({
-              ...formData,
-              medicalConditionsDetails: e.target.value,
-            })
-          }
-        />
-      )}
-    </div>
-    <div>
-      <label className="block mb-2">
-        Have you been diagnosed with any hereditary conditions?
-      </label>
-      <div className="space-x-4">
-        {["yes", "no"].map((value) => (
-          <label key={value} className="inline-flex items-center">
+          <label className="inline-flex items-center">
             <input
               type="radio"
-              name="hereditaryConditions"
-              value={value}
-              checked={formData.hereditaryConditions === value}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  hereditaryConditions: e.target.value,
-                })
-              }
+              name="familyGeneticDisorders"
+              value="no"
+              checked={formData.familyGeneticDisorders === "no"}
+              onChange={() => {
+                setFormData({ ...formData, familyGeneticDisorders: "no" });
+              }}
               className="mr-2"
             />
-            {value.charAt(0).toUpperCase() + value.slice(1)}
+            No
           </label>
-        ))}
-      </div>
-      {formData.hereditaryConditions === "yes" && (
-        <input
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          type="text"
-          name="hereditaryConditionsDetails"
-          placeholder="Please specify..."
-          value={formData.hereditaryConditionsDetails || ""}
-          onChange={(e) =>
-            setFormData({
-              ...formData,
-              hereditaryConditionsDetails: e.target.value,
-            })
-          }
-        />
-      )}
-    </div>
-    <div>
-      <label className="block mb-2">
-        Are you currently taking any medications?
-      </label>
-      <div className="space-x-4">
-        {["yes", "no"].map((value) => (
-          <label key={value} className="inline-flex items-center">
-            <input
-              type="radio"
-              name="currentMedications"
-              value={value}
-              checked={formData.currentMedications === value}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  currentMedications: e.target.value,
-                })
-              }
-              className="mr-2"
-            />
-            {value.charAt(0).toUpperCase() + value.slice(1)}
-          </label>
-        ))}
+        </div>
+        {formData.familyGeneticDisorders === "yes" && (
+          <input
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            type="text"
+            name="familyGeneticDetails"
+            placeholder="Please specify..."
+            value={formData.familyGeneticDetails || ""}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                familyGeneticDetails: e.target.value,
+              })
+            }
+          />
+        )}
       </div>
 
-      {formData.currentMedications === "yes" && (
-        <input
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          type="text"
-          name="currentMedicationsDetails"
-          placeholder="Please specify..."
-          value={formData.currentMedicationsDetails || ""}
-          onChange={(e) =>
-            setFormData({
-              ...formData,
-              currentMedicationsDetails: e.target.value,
-            })
-          }
-        />
-      )}
-    </div>
-    <div>
-      <label className="block mb-2">Do you have any allergies?</label>
-
-      <div className="space-x-4">
-        {["yes", "no"].map((value) => (
-          <label key={value} className="inline-flex items-center">
-            <input
-              type="radio"
-              name="allergies"
-              value={value}
-              checked={formData.allergies === value}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  allergies: e.target.value,
-                })
-              }
-              className="mr-2"
-            />
-            {value.charAt(0).toUpperCase() + value.slice(1)}
-          </label>
-        ))}
+      <div>
+        <label className="block mb-2">
+          Has anyone in your family undergone genetic testing before?
+        </label>
+        <div className="space-x-4">
+          {["yes", "no", "unknown"].map((value) => (
+            <label key={value} className="inline-flex items-center">
+              <input
+                type="radio"
+                name="familyGeneticTesting"
+                value={value}
+                checked={formData.familyGeneticTesting === value}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    familyGeneticTesting: e.target.value,
+                  })
+                }
+                className="mr-2"
+              />
+              {value.charAt(0).toUpperCase() + value.slice(1)}
+            </label>
+          ))}
+        </div>
       </div>
 
-      {formData.allergies === "yes" && (
-        <input
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          type="text"
-          name="allergiesDetails"
-          placeholder="Please specify..."
-          value={formData.allergiesDetails || ""}
-          onChange={(e) =>
-            setFormData({
-              ...formData,
-              allergiesDetails: e.target.value,
-            })
-          }
-        />
-      )}
-    </div>
-    <div>
-      <label className="block mb-2">
-        Have you undergone any medical tests in the past years?
-      </label>
-
-      <div className="space-x-4">
-        {["yes", "no"].map((value) => (
-          <label key={value} className="inline-flex items-center">
-            <input
-              type="radio"
-              name="recentMedicalTests"
-              value={value}
-              checked={formData.recentMedicalTests === value}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  recentMedicalTests: e.target.value,
-                })
-              }
-              className="mr-2"
-            />
-            {value.charAt(0).toUpperCase() + value.slice(1)}
-          </label>
-        ))}
+      <div>
+        <label className="block mb-2">
+          Are you interested in learning about potential hereditary risks?
+        </label>
+        <div className="space-x-4">
+          {["yes", "no"].map((value) => (
+            <label key={value} className="inline-flex items-center">
+              <input
+                type="radio"
+                name="interestedInHereditaryRisks"
+                value={value}
+                checked={formData.interestedInHereditaryRisks === value}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    interestedInHereditaryRisks: e.target.value,
+                  })
+                }
+                className="mr-2"
+              />
+              {value.charAt(0).toUpperCase() + value.slice(1)}
+            </label>
+          ))}
+        </div>
       </div>
-
-      {formData.recentMedicalTests === "yes" && (
-        <input
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          type="text"
-          name="recentMedicalTestsDetails"
-          placeholder="Please specify..."
-          value={formData.recentMedicalTestsDetails || ""}
-          onChange={(e) =>
-            setFormData({
-              ...formData,
-              recentMedicalTestsDetails: e.target.value,
-            })
-          }
-        />
-      )}
     </div>
-  </div>
-);
+  );
+};
