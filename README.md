@@ -13,4 +13,4 @@ https://www.vectorstock.com/royalty-free-vector/dna-landing-page-genetics-engine
 
 
 
-https://meet.google.com/cqq-xzy-rbq?pli=1
+https://meet.google.com/vxj-bdby-zde
