@@ -9,6 +9,8 @@ https://dribbble.com/shots/24175820-Landing-Page-for-Construction-Company
 
 
 https://1b72-2405-201-d02c-e927-84cc-e55-e2b7-983b.ngrok-free.app/
+https://www.vectorstock.com/royalty-free-vector/dna-landing-page-genetics-engineering-web-vector-27380736
 
-     https://www.vectorstock.com/royalty-free-vector/dna-landing-page-genetics-engineering-web-vector-27380736
-https://meet.google.com/ccy-crbq-mdk
+
+
+https://meet.google.com/cqq-xzy-rbq?pli=1
