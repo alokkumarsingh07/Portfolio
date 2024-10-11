@@ -17,4 +17,30 @@ https://teams.microsoft.com/l/meetup-join/19%3ameeting_MGY4NTMxNzYtMzQyZS00NzQ3L
 
 
 
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import MultiStepRegistrationForm from "./components/MultiStepRegistrationForm";
+import Landing from "./components/Landing";
+import Tests from "./components/Tests";
+import { questionsData } from "./components/questionData/Questions"; // Import questionsData
 
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/tests" element={<Tests />} />
+
+        {Object.keys(questionsData).map((key) => (
+          <Route
+            key={key}
+            path={`/form/${key}`}
+            element={<MultiStepRegistrationForm testopt={key} />}
+          />
+        ))}
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
