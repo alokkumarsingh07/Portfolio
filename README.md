@@ -8,3 +8,7 @@ https://dribbble.com/shots/24175820-Landing-Page-for-Construction-Company
 
 
 https://0342-2405-201-d02c-e927-7dfd-3706-a6b1-6ff1.ngrok-free.app 
+
+
+
+https://teams.microsoft.com/l/meetup-join/19%3ameeting_ODlkZjNlMjgtNDUzMi00YThjLTk3OTEtNzI1YzMzYzI4ZGMz%40thread.v2/0?context=%7b%22Tid%22%3a%22990ad79e-1372-4210-8d3e-8488f7d3238e%22%2c%22Oid%22%3a%22731146a1-1a3b-49a4-8b12-93b6fd02efa2%22%7d
