@@ -14,33 +14,3 @@ https://0342-2405-201-d02c-e927-7dfd-3706-a6b1-6ff1.ngrok-free.app
 https://teams.microsoft.com/l/meetup-join/19%3ameeting_MGY4NTMxNzYtMzQyZS00NzQ3LTk3OTktOWMyMDZmMzcxMWU2%40thread.v2/0?context=%7b%22Tid%22%3a%22990ad79e-1372-4210-8d3e-8488f7d3238e%22%2c%22Oid%22%3a%220100f304-372c-47a6-9fb6-597aa1d9e530%22%7d
 
 
-
-
-
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import MultiStepRegistrationForm from "./components/MultiStepRegistrationForm";
-import Landing from "./components/Landing";
-import Tests from "./components/Tests";
-import { questionsData } from "./components/questionData/Questions"; // Import questionsData
-
-const App = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/tests" element={<Tests />} />
-
-        {Object.keys(questionsData).map((key) => (
-          <Route
-            key={key}
-            path={`/form/${key}`}
-            element={<MultiStepRegistrationForm testopt={key} />}
-          />
-        ))}
-      </Routes>
-    </Router>
-  );
-};
-
-export default App;
